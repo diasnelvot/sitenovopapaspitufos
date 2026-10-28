@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papa's Pitufos | Cardápio Gourmet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        royalDark: { 950: '#030712', 900: '#0B132B', 800: '#1C2541', 700: '#2A365B' },
+                        champagne: { 100: '#FAF8F5', 200: '#F3EDE2', 300: '#E7DC8A', 400: '#D2C1A0' },
+                        goldAccent: { 300: '#F7E7A9', 400: '#E5C158', 500: '#D4AF37', 600: '#B89228' },
+                        sapphire: { 300: '#93C5FD', 400: '#60A5FA', 500: '#2563EB', 600: '#1D4ED8', 800: '#1E3A8A', 900: '#0F172A' }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Cinzel', 'Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; color: #F3EDE2; }
+        .glass-panel { background: rgba(11, 19, 43, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(37, 99, 235, 0.25); }
+        .glass-card { background: rgba(28, 37, 65, 0.55); backdrop-filter: blur(14px); border: 1px solid rgba(212, 175, 55, 0.15); transition: all 0.4s; }
+        .glass-card:hover { transform: translateY(-4px); border-color: rgba(212, 175, 55, 0.45); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between bg-royalDark-950">
+
+    <header class="sticky top-0 z-40 glass-panel border-b border-sapphire-500/30 px-4 lg:px-12 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full border border-goldAccent-500/40 flex items-center justify-center bg-royalDark-900 shadow-lg">
+                    <i class="fa-solid fa-crown text-goldAccent-400 text-base"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif text-lg sm:text-xl font-bold tracking-widest text-white uppercase">Papa's Pitufos</h1>
+                    <p class="text-[9px] text-sapphire-400 tracking-[0.25em] uppercase font-semibold">Oitava Nota Gastrobar</p>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-1 bg-royalDark-950/90 p-1.5 rounded-full border border-sapphire-500/30 text-xs font-medium">
+                <a href="index.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">Início</a>
+                <a href="cardapio.html" class="px-4 py-2 rounded-full text-goldAccent-400 bg-sapphire-600/30 border border-goldAccent-500/40 font-bold">Cardápio</a>
+                <a href="alquimia.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">A Alquimia</a>
+                <a href="experiencias.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">Experiências</a>
+                <a href="reservas.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">Reservas VIP</a>
+            </nav>
+
+            <button onclick="toggleCartModal()" class="px-4 py-2.5 rounded-full bg-gradient-to-r from-sapphire-600 via-sapphire-700 to-sapphire-800 border border-goldAccent-500/30 text-white font-bold flex items-center gap-2 text-xs">
+                <i class="fa-solid fa-wine-glass text-goldAccent-400"></i>
+                <span class="hidden sm:inline">Pedido</span>
+                <span id="cart-badge-count" class="px-2 py-0.5 rounded-full bg-royalDark-950 text-goldAccent-400 text-[10px] font-black border border-goldAccent-500/40">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="relative z-10 flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
+        <div class="text-center space-y-2">
+            <span class="text-xs font-bold uppercase tracking-widest text-goldAccent-400 bg-sapphire-500/20 px-4 py-1.5 rounded-full border border-goldAccent-500/30">Menu Gastronômico Completo</span>
+            <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white">Alta Gastronomia & Mixologia</h2>
+        </div>
+
+        <div class="glass-panel p-5 rounded-2xl space-y-4 border border-sapphire-500/30">
+            <div class="flex items-center gap-3 overflow-x-auto pb-1" id="category-tabs"></div>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-3 border-t border-royalDark-800">
+                <input type="text" id="search-input" oninput="renderMenu()" placeholder="Procurar prato ou drink..." class="w-full sm:w-80 bg-royalDark-950/80 border border-sapphire-500/30 rounded-full px-4 py-2 text-xs text-white">
+                <select id="sort-select" onchange="renderMenu()" class="w-full sm:w-auto bg-royalDark-950/80 border border-sapphire-500/30 text-xs text-gray-200 rounded-full px-4 py-2">
+                    <option value="popular">Destaques</option>
+                    <option value="price-asc">Menor Preço</option>
+                    <option value="price-desc">Maior Preço</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </main>
+
+    <!-- SIDEBAR DO CARRINHO -->
+    <div id="cart-sidebar" class="fixed inset-0 z-50 hidden">
+        <div onclick="toggleCartModal()" class="absolute inset-0 bg-royalDark-950/80 backdrop-blur-sm"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-full max-w-sm glass-panel p-6 flex flex-col justify-between shadow-2xl border-l border-sapphire-500/40">
+            <div class="flex items-center justify-between pb-4 border-b border-royalDark-800">
+                <h3 class="font-serif text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-wine-glass text-goldAccent-400"></i> Seu Pedido VIP
+                </h3>
+                <button onclick="toggleCartModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="cart-items" class="flex-grow my-4 overflow-y-auto space-y-3 pr-1"></div>
+            <div class="pt-4 border-t border-royalDark-800 space-y-3">
+                <div class="flex justify-between text-sm font-bold text-white">
+                    <span>Total:</span>
+                    <span id="cart-total-val" class="text-goldAccent-400 font-extrabold">R$ 0,00</span>
+                </div>
+                <button onclick="clearCart()" class="w-full py-3.5 rounded-full bg-sapphire-600 border border-goldAccent-500/40 hover:bg-sapphire-500 text-white font-bold text-xs tracking-wider uppercase">Confirmar Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="glass-panel border-t border-sapphire-500/30 py-8 text-center text-xs text-gray-400">
+        <p>© 2026 Papa's Pitufos Haute Cuisine. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const MENU = [
+            { id: 1, title: "Tornedor Wagyu A5 ao Poivre Nobre", cat: "eats", tag: "Especialidade", price: 185.00, img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80", desc: "Corte nobre de Wagyu A5 com purê trufado." },
+            { id: 2, title: "Canapés de Caviar Beluga", cat: "eats", tag: "Exclusivo", price: 210.00, img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80", desc: "Caviar Beluga sobre blinis e lascas de ouro 24k." },
+            { id: 3, title: "Elixir Safira Dourado Pitufos", cat: "drinks", tag: "Assinatura", price: 58.00, img: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80", desc: "Gin safira, flor de sabugueiro e brilho mineral." },
+            { id: 4, title: "Esfera Belgacom & Gelato Bourbon", cat: "desserts", tag: "Sobremesa", price: 55.00, img: "https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=600&q=80", desc: "Esfera de chocolate belga recheada com gelato." }
+        ];
+
+        let cart = [];
+        let activeCat = "all";
+
+        function setCat(id) {
+            activeCat = id;
+            renderTabs();
+            renderMenu();
+        }
+
+        function renderTabs() {
+            const CATS = [{ id: "all", name: "Todos" }, { id: "eats", name: "Pratos" }, { id: "drinks", name: "Drinks" }, { id: "desserts", name: "Sobremesas" }];
+            document.getElementById('category-tabs').innerHTML = CATS.map(c => `
+                <button onclick="setCat('${c.id}')" class="px-4 py-2 rounded-full text-xs font-semibold ${activeCat === c.id ? 'bg-sapphire-600 text-white' : 'bg-royalDark-950 text-gray-300'}">${c.name}</button>
+            `).join('');
+        }
+
+        function renderMenu() {
+            const search = document.getElementById('search-input').value.toLowerCase();
+            let items = MENU.filter(i => (activeCat === 'all' || i.cat === activeCat) && i.title.toLowerCase().includes(search));
+            document.getElementById('menu-grid').innerHTML = items.map(i => `
+                <div class="glass-card rounded-2xl p-4 space-y-3 flex flex-col justify-between">
+                    <img src="${i.img}" class="w-full h-48 object-cover rounded-xl">
+                    <div>
+                        <h4 class="font-serif font-bold text-white">${i.title}</h4>
+                        <p class="text-xs text-gray-300">${i.desc}</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-2 border-t border-royalDark-800">
+                        <span class="font-bold text-goldAccent-400">R$ ${i.price.toFixed(2)}</span>
+                        <button onclick="addToCart(${i.id})" class="px-3 py-1.5 rounded-full bg-sapphire-600 text-white text-xs font-bold">+ Pedir</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(id) {
+            const item = MENU.find(i => i.id === id);
+            const found = cart.find(c => c.id === id);
+            if (found) found.qty++;
+            else cart.push({ ...item, qty: 1 });
+            updateCart();
+        }
+
+        function updateCart() {
+            document.getElementById('cart-badge-count').innerText = cart.reduce((s, i) => s + i.qty, 0);
+            document.getElementById('cart-items').innerHTML = cart.map(i => `
+                <div class="flex justify-between items-center text-xs text-white">
+                    <span>${i.qty}x ${i.title}</span>
+                    <span class="text-goldAccent-400 font-bold">R$ ${(i.price * i.qty).toFixed(2)}</span>
+                </div>
+            `).join('');
+            document.getElementById('cart-total-val').innerText = 'R$ ' + cart.reduce((s, i) => s + i.price * i.qty, 0).toFixed(2);
+        }
+
+        function toggleCartModal() {
+            document.getElementById('cart-sidebar').classList.toggle('hidden');
+        }
+
+        function clearCart() {
+            alert("Pedido confirmado com sucesso!");
+            cart = [];
+            updateCart();
+            toggleCartModal();
+        }
+
+        window.onload = () => { renderTabs(); renderMenu(); };
+    </script>
+</body>
+</html>
