@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papa's Pitufos | Reservas VIP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        royalDark: { 950: '#030712', 900: '#0B132B' },
+                        goldAccent: { 400: '#E5C158', 500: '#D4AF37' },
+                        sapphire: { 400: '#60A5FA', 500: '#2563EB', 600: '#1D4ED8', 700: '#1D4ED8', 800: '#1E3A8A' }
+                    },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'], serif: ['Cinzel', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; color: #F3EDE2; }
+        .glass-panel { background: rgba(11, 19, 43, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(37, 99, 235, 0.25); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between bg-royalDark-950">
+
+    <header class="sticky top-0 z-40 glass-panel border-b border-sapphire-500/30 px-4 lg:px-12 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full border border-goldAccent-500/40 flex items-center justify-center bg-royalDark-900 shadow-lg">
+                    <i class="fa-solid fa-crown text-goldAccent-400 text-base"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif text-lg sm:text-xl font-bold tracking-widest text-white uppercase">Papa's Pitufos</h1>
+                    <p class="text-[9px] text-sapphire-400 tracking-[0.25em] uppercase font-semibold">Oitava Nota Gastrobar</p>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-1 bg-royalDark-950/90 p-1.5 rounded-full border border-sapphire-500/30 text-xs font-medium">
+                <a href="index.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">Início</a>
+                <a href="cardapio.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">Cardápio</a>
+                <a href="alquimia.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">A Alquimia</a>
+                <a href="experiencias.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">Experiências</a>
+                <a href="reservas.html" class="px-4 py-2 rounded-full text-goldAccent-400 bg-sapphire-600/30 border border-goldAccent-500/40 font-bold">Reservas VIP</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="relative z-10 flex-grow max-w-3xl w-full mx-auto px-4 py-12">
+        <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-sapphire-500/40 space-y-6 shadow-2xl">
+            <div class="text-center space-y-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-goldAccent-400 bg-sapphire-500/20 px-4 py-1.5 rounded-full border border-goldAccent-500/30">Atendimento Preferencial VIP</span>
+                <h2 class="text-3xl font-serif font-bold text-white">Reserva de Mesas & Lounges</h2>
+            </div>
+
+            <form onsubmit="handleReservation(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-[11px] font-bold text-gray-300 uppercase block mb-1">Nome Completo</label>
+                        <input type="text" required placeholder="Seu nome completo" class="w-full bg-royalDark-950 border border-sapphire-500/30 rounded-xl px-4 py-3 text-xs text-white">
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-bold text-gray-300 uppercase block mb-1">Telefone / WhatsApp</label>
+                        <input type="tel" required placeholder="(11) 99999-9999" class="w-full bg-royalDark-950 border border-sapphire-500/30 rounded-xl px-4 py-3 text-xs text-white">
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-bold text-gray-300 uppercase block mb-1">Data Desejada</label>
+                        <input type="date" required class="w-full bg-royalDark-950 border border-sapphire-500/30 rounded-xl px-4 py-3 text-xs text-white">
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-bold text-gray-300 uppercase block mb-1">Ambiente Desejado</label>
+                        <select required class="w-full bg-royalDark-950 border border-sapphire-500/30 rounded-xl px-4 py-3 text-xs text-white">
+                            <option value="balcao">Balcão do Alquimista</option>
+                            <option value="salao">Mesa Salão Safira</option>
+                            <option value="lounge">Sofa Lounge Imperial</option>
+                            <option value="vip">Camarote Privativo VIP</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-sapphire-600 via-sapphire-700 to-sapphire-800 border border-goldAccent-500/40 text-white font-bold text-xs uppercase tracking-wider mt-4">
+                    Solicitar Confirmação VIP
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="glass-panel border-t border-sapphire-500/30 py-8 text-center text-xs text-gray-400">
+        <p>© 2026 Papa's Pitufos Haute Cuisine. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function handleReservation(event) {
+            event.preventDefault();
+            alert("Solicitação de reserva enviada com sucesso! Nossa equipe entrará em contato.");
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
