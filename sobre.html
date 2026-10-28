@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papa's Pitufos | A Alquimia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        royalDark: { 950: '#030712', 900: '#0B132B', 800: '#1C2541' },
+                        goldAccent: { 400: '#E5C158', 500: '#D4AF37' },
+                        sapphire: { 400: '#60A5FA', 500: '#2563EB', 600: '#1D4ED8' }
+                    },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'], serif: ['Cinzel', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; color: #F3EDE2; }
+        .glass-panel { background: rgba(11, 19, 43, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(37, 99, 235, 0.25); }
+        .glass-card { background: rgba(28, 37, 65, 0.55); backdrop-filter: blur(14px); border: 1px solid rgba(212, 175, 55, 0.15); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between bg-royalDark-950">
+
+    <header class="sticky top-0 z-40 glass-panel border-b border-sapphire-500/30 px-4 lg:px-12 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full border border-goldAccent-500/40 flex items-center justify-center bg-royalDark-900 shadow-lg">
+                    <i class="fa-solid fa-crown text-goldAccent-400 text-base"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif text-lg sm:text-xl font-bold tracking-widest text-white uppercase">Papa's Pitufos</h1>
+                    <p class="text-[9px] text-sapphire-400 tracking-[0.25em] uppercase font-semibold">Oitava Nota Gastrobar</p>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-1 bg-royalDark-950/90 p-1.5 rounded-full border border-sapphire-500/30 text-xs font-medium">
+                <a href="index.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">Início</a>
+                <a href="cardapio.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">Cardápio</a>
+                <a href="alquimia.html" class="px-4 py-2 rounded-full text-goldAccent-400 bg-sapphire-600/30 border border-goldAccent-500/40 font-bold">A Alquimia</a>
+                <a href="experiencias.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">Experiências</a>
+                <a href="reservas.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">Reservas VIP</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="relative z-10 flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+        <div class="text-center space-y-2">
+            <span class="text-xs font-bold uppercase tracking-widest text-sapphire-400 bg-sapphire-500/10 px-4 py-1.5 rounded-full border border-sapphire-500/20">História & Tradição Nobre</span>
+            <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white">Nossa Filosofia Gastronômica</h2>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="aspect-video rounded-3xl overflow-hidden border border-sapphire-500/40 shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Ambiente do Restaurante" class="w-full h-full object-cover">
+            </div>
+
+            <div class="space-y-6">
+                <h3 class="text-2xl font-serif font-bold text-white">Sabor, Técnica Moleculares & Pureza</h3>
+                <p class="text-gray-300 leading-relaxed text-xs sm:text-sm font-light">Criado para exigentes apreciadores do bom viver, o Papa's Pitufos unifica o rigor clássico da culinária europeia com toques de vanguarda e mixologia autoral em um ambiente envolvente no tom azul safira imperial.</p>
+                <div class="grid grid-cols-2 gap-4 pt-2">
+                    <div class="glass-card p-4 rounded-2xl border-l-2 border-l-goldAccent-400">
+                        <h4 class="font-bold text-white text-sm">Cozinha Autoral</h4>
+                        <p class="text-[11px] text-gray-400 mt-1">Pratos assinados por mestres com foco em textura e profundidade.</p>
+                    </div>
+                    <div class="glass-card p-4 rounded-2xl border-l-2 border-l-sapphire-400">
+                        <h4 class="font-bold text-white text-sm">Mixologia Safira</h4>
+                        <p class="text-[11px] text-gray-400 mt-1">Coquetéis moleculares com botânicos selvagens e esferificações.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="glass-panel border-t border-sapphire-500/30 py-8 text-center text-xs text-gray-400">
+        <p>© 2026 Papa's Pitufos Haute Cuisine. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
