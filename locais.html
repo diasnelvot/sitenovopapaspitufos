@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papa's Pitufos | Experiências</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        royalDark: { 950: '#030712', 900: '#0B132B' },
+                        goldAccent: { 400: '#E5C158', 500: '#D4AF37' },
+                        sapphire: { 400: '#60A5FA', 500: '#2563EB', 600: '#1D4ED8' }
+                    },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'], serif: ['Cinzel', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; color: #F3EDE2; }
+        .glass-panel { background: rgba(11, 19, 43, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(37, 99, 235, 0.25); }
+        .glass-card { background: rgba(28, 37, 65, 0.55); backdrop-filter: blur(14px); border: 1px solid rgba(212, 175, 55, 0.15); transition: all 0.4s; }
+        .glass-card:hover { transform: translateY(-4px); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between bg-royalDark-950">
+
+    <header class="sticky top-0 z-40 glass-panel border-b border-sapphire-500/30 px-4 lg:px-12 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full border border-goldAccent-500/40 flex items-center justify-center bg-royalDark-900 shadow-lg">
+                    <i class="fa-solid fa-crown text-goldAccent-400 text-base"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif text-lg sm:text-xl font-bold tracking-widest text-white uppercase">Papa's Pitufos</h1>
+                    <p class="text-[9px] text-sapphire-400 tracking-[0.25em] uppercase font-semibold">Oitava Nota Gastrobar</p>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-1 bg-royalDark-950/90 p-1.5 rounded-full border border-sapphire-500/30 text-xs font-medium">
+                <a href="index.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">Início</a>
+                <a href="cardapio.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">Cardápio</a>
+                <a href="alquimia.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">A Alquimia</a>
+                <a href="experiencias.html" class="px-4 py-2 rounded-full text-goldAccent-400 bg-sapphire-600/30 border border-goldAccent-500/40 font-bold">Experiências</a>
+                <a href="reservas.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white transition-all">Reservas VIP</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="relative z-10 flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+        <div class="text-center space-y-2">
+            <span class="text-xs font-bold uppercase tracking-widest text-goldAccent-400 bg-sapphire-500/20 px-4 py-1.5 rounded-full border border-goldAccent-500/30">Eventos Privativos & Masterclasses</span>
+            <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white">Experiências Exclusivas</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="glass-card p-6 rounded-3xl space-y-4">
+                <i class="fa-solid fa-wine-bottle text-goldAccent-400 text-2xl"></i>
+                <h3 class="font-serif font-bold text-lg text-white">Degustação Imperial em 7 Tempos</h3>
+                <p class="text-xs text-gray-300 font-light">Uma jornada multissensorial por insumos raros harmonizados com Grandes Crus e safras especiais.</p>
+                <a href="reservas.html" class="text-xs font-bold text-goldAccent-400 hover:underline block">Consultar VIP →</a>
+            </div>
+
+            <div class="glass-card p-6 rounded-3xl space-y-4">
+                <i class="fa-solid fa-champagne-glasses text-sapphire-400 text-2xl"></i>
+                <h3 class="font-serif font-bold text-lg text-white">Salão Secreto Safira</h3>
+                <p class="text-xs text-gray-300 font-light">Espaço privativo equipado com sistema acústico e atendimento dedicado para até 20 pessoas.</p>
+                <a href="reservas.html" class="text-xs font-bold text-sapphire-400 hover:underline block">Solicitar Orçamento →</a>
+            </div>
+
+            <div class="glass-card p-6 rounded-3xl space-y-4">
+                <i class="fa-solid fa-flask text-goldAccent-400 text-2xl"></i>
+                <h3 class="font-serif font-bold text-lg text-white">Masterclass de Mixologia Molecular</h3>
+                <p class="text-xs text-gray-300 font-light">Aprenda as técnicas de clarificação, infusão sob pressão e esferificação diretamente com nosso chefe de bar.</p>
+                <a href="reservas.html" class="text-xs font-bold text-goldAccent-400 hover:underline block">Ver Turmas →</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="glass-panel border-t border-sapphire-500/30 py-8 text-center text-xs text-gray-400">
+        <p>© 2026 Papa's Pitufos Haute Cuisine. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
